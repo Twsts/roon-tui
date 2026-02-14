@@ -1,6 +1,15 @@
 # roon-tui
 
-Forked and updated with vim keybindings with help from claude.
+Fork with vim-style keybindings for playback control.
+
+## What's New in This Fork
+
+This fork adds vim-style keybindings alongside the original controls:
+- **Ctrl+J/K** - Volume down/up (in addition to Ctrl+↓/↑)
+- **Ctrl+H/L** - Previous/next track (in addition to Ctrl+←/→)
+- **Ctrl+T** - Help screen (moved from Ctrl+H)
+
+All original keybindings still work!
 
 ### A Roon Remote for the terminal
 
@@ -15,7 +24,7 @@ Roon TUI uses an own developed [Rust port](https://github.com/TheAppgineer/rust-
 
 ### Building from Source Code
 * Install Rust: visit [rustup.rs](https://rustup.rs/) and follow the provided instructions
-* Clone the roon-tui git repository: `git clone https://github.com/TheAppgineer/roon-tui.git`
+* Clone the roon-tui git repository: `git clone https://github.com/Twsts/roon-tui.git`
 * Change directory and build the project: `cd roon-tui && cargo build --release`
 * The binary can be found in: `target/release/roon-tui`
 
@@ -24,7 +33,7 @@ Roon TUI uses an own developed [Rust port](https://github.com/TheAppgineer/rust-
 * Rebuild: `cargo build --release`
 
 ### Downloading Release Binaries
-Prebuilt binaries can be downloaded from the [latests release](https://github.com/TheAppgineer/roon-tui/releases/latest) page on GitHub. Binaries might have been created by other users for platforms I don't have access to myself.
+Prebuilt binaries can be downloaded from the [latest release](https://github.com/Twsts/roon-tui/releases/latest) page on GitHub for Linux (x86_64, ARM64) and macOS (Intel, Apple Silicon).
 
 ### Using Homebrew (macOS)
 User [Nepherte](https://github.com/Nepherte) created a Homebrew tap from which you can install Roon TUI. Instructions can be found at https://github.com/Nepherte/homebrew-roon.
@@ -144,13 +153,13 @@ In the Random Album and Random Track mode new entries can be added to the Queue 
 |Ctrl-g|Open zone grouping
 |Ctrl-Space, Ctrl-p|Play / Pause
 |Ctrl-e|Pause at End of Track
-|Ctrl-&uarr;|Volume up
-|Ctrl-&darr;|Volume down
-|Ctrl-&rarr;|Next track
-|Ctrl-&larr;|Previous track
+|Ctrl-&uarr;, Ctrl-k|Volume up
+|Ctrl-&darr;, Ctrl-j|Volume down
+|Ctrl-&rarr;, Ctrl-l|Next track
+|Ctrl-&larr;, Ctrl-h|Previous track
 |Ctrl-q|Toggle through Queue Modes
 |Ctrl-a|Append tracks according Queue Mode
-|Ctrl-h|Open help screen
+|Ctrl-t|Open help screen
 |Ctrl-c|Quit
 ### Common list controls
 |||
