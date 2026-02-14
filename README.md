@@ -1,5 +1,7 @@
 # roon-tui
 
+Forked and updated with vim keybindings with help from claude.
+
 ### A Roon Remote for the terminal
 
 ## About
