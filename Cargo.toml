@@ -5,7 +5,7 @@ authors = ["The Appgineer <theappgineer@gmail.com>"]
 edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
-repository = "https://github.com/theappgineer/roon-tui"
+repository = "https://github.com/Twsts/roon-tui"
 publish = false
 
 [dependencies]
