@@ -635,6 +635,26 @@ impl App {
                 match key.code {
                     KeyCode::Char('j') if self.input.is_empty() => self.browse.next(),
                     KeyCode::Char('k') if self.input.is_empty() => self.browse.prev(),
+                    KeyCode::Char('h') if self.input.is_empty() => {
+                        self.input.clear();
+                        self.browse_match_list.clear();
+                        self.to_roon.send(IoEvent::BrowseBack).await.unwrap();
+                    }
+                    KeyCode::Char('l') if self.input.is_empty() => {
+                        self.input.clear();
+                        self.browse_match_list.clear();
+                        let item_key = self.get_item_key();
+
+                        if let Some(item) = self.browse.get_selected_item() {
+                            if let Some(prompt) = item.input_prompt.as_ref() {
+                                self.prompt = prompt.prompt.to_owned();
+                                self.pending_item_key = item_key;
+                                self.select_view(Some(View::Prompt));
+                            } else {
+                                self.to_roon.send(IoEvent::BrowseSelected(item_key)).await.unwrap();
+                            }
+                        }
+                    }
                     KeyCode::Char(key) => self.select_by_input(key),
                     KeyCode::Backspace => {
                         self.input.pop();

@@ -5,9 +5,16 @@ Fork with vim-style keybindings for playback control.
 ## What's New in This Fork
 
 This fork adds vim-style keybindings alongside the original controls:
+
+**Global controls:**
 - **Ctrl+J/K** - Volume down/up (in addition to Ctrl+↓/↑)
 - **Ctrl+H/L** - Previous/next track (in addition to Ctrl+←/→)
 - **Ctrl+T** - Help screen (moved from Ctrl+H)
+
+**Browse navigation:**
+- **h** - Go back/up one level (same as Esc)
+- **l** - Select/enter (same as Enter)
+- **j/k** - Move down/up in lists
 
 All original keybindings still work!
 
@@ -164,17 +171,17 @@ In the Random Album and Random Track mode new entries can be added to the Queue 
 ### Common list controls
 |||
 |---|---|
-|&uarr;|Move up
-|&darr;|Move down
-|Home|Move to top
-|End|Move to bottom
+|&uarr;, k|Move up
+|&darr;, j|Move down
+|Home, g|Move to top
+|End, G|Move to bottom
 |Page Up|Move page up
 |Page Down|Move page down
 ### Browse View
 |||
 |---|---|
-|Enter|Select
-|Esc|Move level up
+|Enter, l|Select
+|Esc, h|Move level up
 |Ctrl-Home|Move to top level
 |F5|Refresh
 |a...z|Multi-character jump to item
