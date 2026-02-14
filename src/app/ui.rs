@@ -30,7 +30,7 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
         " No Roon Server paired/found ".to_owned()
     };
     let hint = Title::from(
-            Span::styled(" Ctrl-h for Help ", Style::default().fg(Color::Reset))
+            Span::styled(" Ctrl-t for Help ", Style::default().fg(Color::Reset))
         )
         .position(Position::Bottom)
         .alignment(Alignment::Center);
@@ -749,20 +749,20 @@ fn draw_help_view(frame: &mut Frame, area: Rect, app: &mut App) {
         "Ctrl-Sp Play/Pause",
         "Ctrl-p  Play/Pause",
         "Ctrl-e  Pause at end",
-        "Ctrl-Up Volume up",
-        "Ctrl-Dn Volume down",
-        "Ctrl-Ri Next track",
-        "Ctrl-Le Previous track",
+        "Ctrl-Up/k Volume up",
+        "Ctrl-Dn/j Volume down",
+        "Ctrl-Ri/l Next track",
+        "Ctrl-Le/h Previous track",
         "Ctrl-q  Queue mode",
         "Ctrl-a  Append queue",
-        "Ctrl-h  This help page",
+        "Ctrl-t  This help page",
         "Ctrl-c  Quit",
         "",
         "__List Controls__",
-        "Up      Move up",
-        "Down    Move down",
-        "Home    Move to top",
-        "End     Move to bottom",
+        "Up/k    Move up",
+        "Down/j  Move down",
+        "Home/g  Move to top",
+        "End/G   Move to bottom",
         "Page-Up Move page up",
         "Page-Dn Move page down",
         "",

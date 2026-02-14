@@ -559,10 +559,10 @@ impl App {
                 }
                 KeyModifiers::CONTROL => {
                     match key.code {
-                        KeyCode::Up => self.to_roon.send(IoEvent::ChangeVolume(1)).await.unwrap(),
-                        KeyCode::Down => self.to_roon.send(IoEvent::ChangeVolume(-1)).await.unwrap(),
-                        KeyCode::Left => self.to_roon.send(IoEvent::Control(Control::Previous)).await.unwrap(),
-                        KeyCode::Right => self.to_roon.send(IoEvent::Control(Control::Next)).await.unwrap(),
+                        KeyCode::Up | KeyCode::Char('k') => self.to_roon.send(IoEvent::ChangeVolume(1)).await.unwrap(),
+                        KeyCode::Down | KeyCode::Char('j') => self.to_roon.send(IoEvent::ChangeVolume(-1)).await.unwrap(),
+                        KeyCode::Left | KeyCode::Char('h') => self.to_roon.send(IoEvent::Control(Control::Previous)).await.unwrap(),
+                        KeyCode::Right | KeyCode::Char('l') => self.to_roon.send(IoEvent::Control(Control::Next)).await.unwrap(),
                         KeyCode::Delete => self.to_roon.send(IoEvent::QueueClear).await.unwrap(),
                         KeyCode::Char('e') => self.to_roon.send(IoEvent::PauseOnTrackEndReq).await.unwrap(),
                         KeyCode::Char('p') | KeyCode::Char(' ') => self.to_roon.send(IoEvent::Control(Control::PlayPause)).await.unwrap(),
@@ -585,7 +585,7 @@ impl App {
                                 self.to_roon.send(IoEvent::ZoneGroupReq).await.unwrap();
                             }
                         }
-                        KeyCode::Char('h') => {
+                        KeyCode::Char('t') => {
                             if selected_view != Some(View::Help) {
                                 match selected_view {
                                     Some(View::Prompt) => self.restore_view(),
@@ -633,6 +633,8 @@ impl App {
             }
             KeyModifiers::NONE => {
                 match key.code {
+                    KeyCode::Char('j') if self.input.is_empty() => self.browse.next(),
+                    KeyCode::Char('k') if self.input.is_empty() => self.browse.prev(),
                     KeyCode::Char(key) => self.select_by_input(key),
                     KeyCode::Backspace => {
                         self.input.pop();
@@ -694,10 +696,10 @@ impl App {
 
     async fn handle_queue_key_codes(&mut self, key: KeyEvent) {
         match key.code {
-            KeyCode::Up => self.queue.prev(),
-            KeyCode::Down => self.queue.next(),
-            KeyCode::Home => self.queue.select_first(),
-            KeyCode::End => self.queue.select_last(),
+            KeyCode::Up | KeyCode::Char('k') => self.queue.prev(),
+            KeyCode::Down | KeyCode::Char('j') => self.queue.next(),
+            KeyCode::Home | KeyCode::Char('g') => self.queue.select_first(),
+            KeyCode::End | KeyCode::Char('G') => self.queue.select_last(),
             KeyCode::PageUp => self.queue.select_prev_page(),
             KeyCode::PageDown => self.queue.select_next_page(),
             KeyCode::Enter => {
@@ -758,10 +760,10 @@ impl App {
 
     async fn handle_zone_key_codes(&mut self, key: KeyEvent) {
         match key.code {
-            KeyCode::Up => self.zones.prev(),
-            KeyCode::Down => self.zones.next(),
-            KeyCode::Home => self.zones.select_first(),
-            KeyCode::End => self.zones.select_last(),
+            KeyCode::Up | KeyCode::Char('k') => self.zones.prev(),
+            KeyCode::Down | KeyCode::Char('j') => self.zones.next(),
+            KeyCode::Home | KeyCode::Char('g') => self.zones.select_first(),
+            KeyCode::End | KeyCode::Char('G') => self.zones.select_last(),
             KeyCode::PageUp => self.zones.select_prev_page(),
             KeyCode::PageDown => self.zones.select_next_page(),
             KeyCode::Enter => {
@@ -785,10 +787,10 @@ impl App {
 
     async fn handle_grouping_key_codes(&mut self, key: KeyEvent) -> Option<()> {
         match key.code {
-            KeyCode::Up => self.grouping.prev(),
-            KeyCode::Down => self.grouping.next(),
-            KeyCode::Home => self.grouping.select_first(),
-            KeyCode::End => self.grouping.select_last(),
+            KeyCode::Up | KeyCode::Char('k') => self.grouping.prev(),
+            KeyCode::Down | KeyCode::Char('j') => self.grouping.next(),
+            KeyCode::Home | KeyCode::Char('g') => self.grouping.select_first(),
+            KeyCode::End | KeyCode::Char('G') => self.grouping.select_last(),
             KeyCode::PageUp => self.grouping.select_prev_page(),
             KeyCode::PageDown => self.grouping.select_next_page(),
             KeyCode::Char(' ') => {
