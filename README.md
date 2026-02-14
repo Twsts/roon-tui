@@ -42,11 +42,14 @@ Roon TUI uses an own developed [Rust port](https://github.com/TheAppgineer/rust-
 ### Downloading Release Binaries
 Prebuilt binaries can be downloaded from the [latest release](https://github.com/Twsts/roon-tui/releases/latest) page on GitHub for Linux (x86_64, ARM64) and macOS (Intel, Apple Silicon).
 
-### Using Homebrew (macOS)
-User [Nepherte](https://github.com/Nepherte) created a Homebrew tap from which you can install Roon TUI. Instructions can be found at https://github.com/Nepherte/homebrew-roon.
-
 ### Using Arch User Repository (Arch Linux)
-For Arch Linux users there is an entry in the [AUR](https://aur.archlinux.org/packages/roon-tui), provided by [Noa Himesaka](https://github.com/NoaHimesaka1873).
+```bash
+yay -S roon-tui-vim-bin
+# or
+paru -S roon-tui-vim-bin
+```
+
+**Note:** The original roon-tui is also available in AUR as `roon-tui`, but this fork with vim keybindings is packaged separately as `roon-tui-vim-bin`.
 
 ## Authorizing Core Access
 On first execution the outside border of the UI will be highlighted without any views active, this indicates that pairing with a Roon Core has to take place. Use your Roon Remote and select Settings&rarr;Extensions from the hamburger menu and then Enable Roon TUI.
