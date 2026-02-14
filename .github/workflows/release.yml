@@ -88,11 +88,12 @@ jobs:
       - name: Create checksums
         run: |
           cd artifacts
+          # Combine all checksums into one file
           for dir in */; do
             cd "$dir"
-            sha256sum * > checksums.txt
+            sha256sum * | sed "s|^|${dir%/}: |"
             cd ..
-          done
+          done > ../SHA256SUMS
           cd ..
 
       - name: Create Release
@@ -103,7 +104,7 @@ jobs:
             artifacts/roon-tui-linux-aarch64/roon-tui-linux-aarch64
             artifacts/roon-tui-macos-x86_64/roon-tui-macos-x86_64
             artifacts/roon-tui-macos-aarch64/roon-tui-macos-aarch64
-            artifacts/*/checksums.txt
+            SHA256SUMS
           draft: false
           prerelease: false
           generate_release_notes: true
